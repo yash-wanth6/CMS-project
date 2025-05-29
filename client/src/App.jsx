@@ -4,6 +4,9 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import Signin from './pages/Signin'
 import Developer from './pages/Developer'
+import Header from './layouts/Header'
+import { BrowserRouter } from 'react-router'
+import AppRoutes from './routes/AppRoutes'
 
 function App() {
 
@@ -14,6 +17,9 @@ function App() {
       {/* <NotFound></NotFound> */}
        <Signin></Signin>
        <Developer></Developer>
+      <BrowserRouter>
+        <AppRoutes></AppRoutes>
+      </BrowserRouter>
     </>
   )
 }
