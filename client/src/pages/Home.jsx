@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export default function Home() {
   return (
@@ -6,10 +7,10 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-8">Welcome to Our Application</h1>
       <div className="space-x-4">
         <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded">
-          Sign-in
+          <Link to={'/signin'}>Sign-in</Link>
         </button>
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded">
-          Sign-up
+          <Link to={'/signup'}>Sign-up</Link>
         </button>
       </div>
     </div>
