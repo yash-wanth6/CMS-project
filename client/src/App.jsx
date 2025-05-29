@@ -4,23 +4,19 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import Signin from './pages/Signin'
 import Developer from './pages/Developer'
-import Header from './layouts/Header'
+import Basiclayout from './layouts/Basiclayout'
 import { BrowserRouter } from 'react-router'
 import AppRoutes from './routes/AppRoutes'
+import { AuthProvider } from './context/AuthContext'
 
 function App() {
 
   return (
-    <>
-      {/* <Signup></Signup> */}
-      {/* <Home></Home> */}
-      {/* <NotFound></NotFound> */}
-       <Signin></Signin>
-       <Developer></Developer>
-      <BrowserRouter>
-        <AppRoutes></AppRoutes>
-      </BrowserRouter>
-    </>
+    <div className="flex flex-col max-h-screen">
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </div>
   )
 }
 
