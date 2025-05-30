@@ -8,14 +8,17 @@ import Basiclayout from './layouts/Basiclayout'
 import { BrowserRouter } from 'react-router'
 import AppRoutes from './routes/AppRoutes'
 import { AuthProvider } from './context/AuthContext'
+import DashboardCharts from './dashboard/DashboardCharts'
+import DashboardTracker from './dashboard/DashboardTracker'
 
 function App() {
 
   return (
     <div className="flex flex-col max-h-screen">
-      <AuthProvider>
+      {/* <AuthProvider>
         <AppRoutes />
-      </AuthProvider>
+      </AuthProvider> */}
+      <DashboardTracker></DashboardTracker>
     </div>
   )
 }
