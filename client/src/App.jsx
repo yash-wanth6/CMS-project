@@ -10,15 +10,16 @@ import AppRoutes from './routes/AppRoutes'
 import { AuthProvider } from './context/AuthContext'
 import DashboardCharts from './dashboard/DashboardCharts'
 import DashboardTracker from './dashboard/DashboardTracker'
+import DashboardHeader from './layouts/DashboardHeader'
 
 function App() {
 
   return (
     <div className="flex flex-col max-h-screen">
-      {/* <AuthProvider>
+      <AuthProvider>
         <AppRoutes />
-      </AuthProvider> */}
-      <DashboardTracker></DashboardTracker>
+      </AuthProvider>
+      {/* password evaluation */}
     </div>
   )
 }

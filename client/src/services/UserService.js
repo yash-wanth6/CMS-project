@@ -13,6 +13,7 @@ class UserService {
     isUserExists(email) {
         let found = this.db.users.find((obj) => obj.email===email)
         if(found===undefined) {
+            alert("User not found");
             throw new Error("User not found");
         }
         return found;
@@ -24,6 +25,7 @@ class UserService {
             return true;
         }
         else {
+            alert("Wrond password");
             throw new Error("Wrond password");
         }
     }
@@ -31,6 +33,7 @@ class UserService {
     changeEmail(email,newEmail) {
         let user = this.isUserExists(email)
         if(user===undefined) {
+            alert("Email not found");
             throw new Error("Email not found");
         }
         else {
@@ -42,6 +45,7 @@ class UserService {
     changePassword(email,newPassword) {
         let user = this.isUserExists(email);
         if(user===undefined) {
+            alert("Email not found");
             throw new Error("Email not found");
         }
         else {
@@ -54,10 +58,13 @@ class UserService {
         let found = this.db.users.find((obj) => obj.email===email)
         console.log(found)
         if(found!== undefined) {
+            alert("User Already Exists");
             throw new Error("User Already Exists");
         }
         else {
-            this.db.users.push({username,email,password,gender});
+            let values = [];
+            let datas = [];
+            this.db.users.push({username,email,password,gender,values,datas});
             this.updateUser();
         }
     }
@@ -65,6 +72,25 @@ class UserService {
     updateUser() {
         localStorage.removeItem("yup");
         localStorage.setItem("yup",JSON.stringify(this.db));
+    }
+
+    getDatas(email) {
+        console.log(email);
+        let user = this.db.users.find((obj)=> obj.email === email);
+        return user && user.datas ? user.datas : [];
+    }
+
+    getValues(email) {
+        let user = this.db.users.find((obj)=> obj.email === email);
+        return user && user.values ? user.values : [];
+    }
+
+    setDatasAndValues(email,datas,values) {
+        console.log(email);
+        let user = this.db.users.find((obj) => obj.email === email);
+        user.datas = datas;
+        user.values = values;
+        this.updateUser();
     }
 
 }
