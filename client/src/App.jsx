@@ -8,6 +8,9 @@ import Basiclayout from './layouts/Basiclayout'
 import { BrowserRouter } from 'react-router'
 import AppRoutes from './routes/AppRoutes'
 import { AuthProvider } from './context/AuthContext'
+import DashboardCharts from './dashboard/DashboardCharts'
+import DashboardTracker from './dashboard/DashboardTracker'
+import DashboardHeader from './layouts/DashboardHeader'
 
 function App() {
 
@@ -16,6 +19,7 @@ function App() {
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>
+      {/* password evaluation */}
     </div>
   )
 }

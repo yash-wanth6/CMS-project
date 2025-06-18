@@ -14,13 +14,15 @@ export function AuthProvider({ children }) {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [gender, setGender] = useState('');
+    //Dashboard Variables
+    const [totalTasks, setTotalTasks] = useState(0);
+    const [finished, setFinished] = useState(0);
 
     function login() {
         try {
             if (userService.authenticate(email, password)) {
                 setIsAuth(true);
             }
-            return true;
         }
         catch (err) {
             console.log(err);
@@ -47,7 +49,7 @@ export function AuthProvider({ children }) {
     }, [isAuth]);
 
     return (
-        <AuthContext.Provider value={{ isAuth, username, email, password, gender, login, logout, signup, setUsername, setPassword, setEmail, setGender }}>
+        <AuthContext.Provider value={{ isAuth, username, email, password, gender, login, logout, signup, setUsername, setPassword, setEmail, setGender, setIsAuth, totalTasks, setTotalTasks,finished, setFinished}}>
             {children}
         </AuthContext.Provider>
     )

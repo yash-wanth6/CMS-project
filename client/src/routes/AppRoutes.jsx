@@ -8,10 +8,16 @@ import NotFound from '../pages/NotFound';
 import Aboutpage from '../pages/Aboutpage';
 import Developer from '../pages/Developer'
 import DashboardHome from '../dashboard/DashboardHome';
+import DashboardTracker from '../dashboard/DashboardTracker';
+import DashboardCharts from '../dashboard/DashboardCharts';
+import DashboardHeader from '../layouts/DashboardHeader';
 
 export default function AppRoutes() {
+
     const paths = ['/','/signin','/signup','/notfound','/about','/developer'];
-    const values = [<Home></Home>,<Signin></Signin>,<Signup></Signup>,<NotFound></NotFound>,<Aboutpage></Aboutpage>,<Developer></Developer>]
+    const values = [<Home/>,<Signin/>,<Signup/>,<NotFound/>,<Aboutpage/>,<Developer/>];
+    const dashboardPaths = ['/dashboard/home','/dashboard/tracker','dashboard/charts'];
+    const dashboardValues = [<DashboardHome/>,<DashboardTracker/>,<DashboardCharts/>]
   return (
     <Routes>
         <Route path='/' element={<Header></Header>}>
@@ -23,8 +29,14 @@ export default function AppRoutes() {
                 })
             }
         </Route>
-        <Route path='/dashboard/home' element={<DashboardHome></DashboardHome>}>
-            
+        <Route path='/dashboard' element={<DashboardHeader/>}>
+            {
+                dashboardPaths.map((value,index) => {
+                    return(
+                        <Route key={index} path={dashboardPaths[index]} element={dashboardValues[index]}/>
+                    )
+                })
+            }
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
     </Routes>
