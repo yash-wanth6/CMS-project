@@ -48,7 +48,10 @@ export default function DashboardHome() {
       <div className={cardClasses + " border-gray-200"}>
         <h3 className="text-lg font-semibold">Developers</h3>
         <p className="text-sm text-gray-500">Tools and API documentation.</p>
-        <span className="mt-4 text-8xl col-span-1 sm:col-span-2 md:col-span-3 flex justify-center items-center" ></span>
+        <span className="mt-4 text-8xl col-span-1 sm:col-span-2 md:col-span-3 flex justify-center items-center" >
+          <img className="w-48 h-48" src="https://static.vecteezy.com/system/resources/previews/002/206/015/original/developer-working-icon-free-vector.jpg" alt="developer" />
+        </span>
+      
       </div>
 
       <div className="col-span-1 sm:col-span-2 md:col-span-3 flex justify-center items-center">
