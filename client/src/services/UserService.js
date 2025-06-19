@@ -62,9 +62,8 @@ class UserService {
             throw new Error("User Already Exists");
         }
         else {
-            let values = [];
-            let datas = [];
-            this.db.users.push({username,email,password,gender,values,datas});
+            let values = [],datas = [],notes=[],tasks=[];
+            this.db.users.push({username,email,password,gender,values,datas,notes,tasks});
             this.updateUser();
         }
     }
@@ -77,19 +76,40 @@ class UserService {
     getDatas(email) {
         console.log(email);
         let user = this.db.users.find((obj)=> obj.email === email);
-        return user && user.datas ? user.datas : [];
+        return user.datas;
     }
 
     getValues(email) {
         let user = this.db.users.find((obj)=> obj.email === email);
-        return user && user.values ? user.values : [];
+        return user.values;
     }
 
+    getNotes(email) {
+        let user = this.db.users.find((obj) => obj.email === email);
+        return user.notes;
+    }
+
+    getTasks(email) {
+        let user = this.db.users.find((obj) => obj.email === email);
+        return user.tasks;
+    }
+
+    setTasks(email,tasks) {
+        let user = this.db.users.find((obj)=> obj.email === email);
+        user.tasks = tasks
+        this.updateUser();
+    }
     setDatasAndValues(email,datas,values) {
         console.log(email);
         let user = this.db.users.find((obj) => obj.email === email);
         user.datas = datas;
         user.values = values;
+        this.updateUser();
+    }
+
+    addNotes(email,content) {
+        let user = this.db.users.find((obj) => obj.email === email);
+        user.notes.push(content);
         this.updateUser();
     }
 

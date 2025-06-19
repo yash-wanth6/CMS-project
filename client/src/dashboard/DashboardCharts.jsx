@@ -2,12 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import AuthContext from '../context/AuthContext';
 import userService from '../services/UserService';
+import { useNavigate } from 'react-router';
 
 export default function DashboardCharts() {
+    const navigate = useNavigate();
     const { email } = useContext(AuthContext);
     const datas = userService.getDatas(email);
     const values = userService.getValues(email);
     const { totalTasks, finished, setIsAuth } = useContext(AuthContext);
+
 
     useEffect(() => {
         if (0 < totalTasks) {
@@ -17,8 +20,6 @@ export default function DashboardCharts() {
             values.push(value);
             userService.setDatasAndValues(email, datas, values);
         } else {
-            datas.length = 0;
-            values.length = 0;
             userService.setDatasAndValues(email, datas, values);
         }
     }, [totalTasks, finished]);
@@ -64,7 +65,8 @@ export default function DashboardCharts() {
                     No progress included. Please include progress in tracker to show charts.
                 </h1>
             )}
-            <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+            <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                    onClick={()=> navigate('/dashboard/tracker')}>
                 Go to Tracker
             </button>
         </div>

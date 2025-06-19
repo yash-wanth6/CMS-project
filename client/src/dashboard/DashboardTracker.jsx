@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import { useContext } from 'react';
 import { Link } from 'react-router';
 import AuthContext from '../context/AuthContext';
+import userService from '../services/UserService';
 
 export default function DashboardTracker() {
-    const [tasks, setTasks] = useState([]);
+    const {email, totalTasks, setTotalTasks,finished, setFinished, isAuth, setIsAuth} = useContext(AuthContext);
+    let tasks = userService.getTasks(email);
     const [value, setValue] = useState('');
-    const {totalTasks, setTotalTasks,finished, setFinished, isAuth, setIsAuth} = useContext(AuthContext);
 
     function deleteTask(del_index) {
         const isFinished = tasks[del_index][1];
         let newtask = tasks.filter((value, index) => index !== del_index);
-        setTasks(newtask);
+        tasks = newtask;
         setTotalTasks(totalTasks - 1);
         if (isFinished) {
             setFinished(finished - 1);
@@ -25,13 +26,14 @@ export default function DashboardTracker() {
             return value;
         });
         const newFinished = newtask.filter(task => task[1]).length;
-        setTasks(newtask);
+        tasks = newtask;
+        userService.setTasks(email,tasks);
         setFinished(newFinished);
     }
     return (
         <div className="bg-white min-h-screen flex items-center justify-center">
             <div className="w-3/5 md:w-2/3 lg:w-3/5 bg-white rounded-xl shadow-2xl shadow-gray-300 p-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">Hi yash, Track your progress</h1>
+                <h1 className="text-3xl font-bold text-gray-800 mb-6">Hi buddy, Track your progress</h1>
                 <div className="flex gap-4 mb-6">
                     <input
                         type="text"
@@ -44,7 +46,8 @@ export default function DashboardTracker() {
                         className="bg-gray-400 hover:bg-gray-700 text-white px-6 py-2 rounded-lg shadow-md"
                         onClick={() => {
                             if (value.length !== 0) {
-                                setTasks([...tasks, [value, false]]);
+                                tasks = [...tasks, [value, false]];
+                                userService.setTasks(email,tasks);
                                 setTotalTasks(totalTasks + 1);
                             } else {
                                 alert('Invalid task');
@@ -64,7 +67,7 @@ export default function DashboardTracker() {
                             key={index}
                             className="flex items-center justify-between bg-gray-100 rounded-lg px-4 py-3 shadow"
                         >
-                            <span className={`text-gray-800 ${task[1] ? 'line-through opacity-60' : ''}`}>
+                            <span className={`text-gray-800 ${task[1] ? 'opacity-60' : ''}`}>
                                 {task[0]}
                             </span>
                             <div className="flex items-center gap-3">
