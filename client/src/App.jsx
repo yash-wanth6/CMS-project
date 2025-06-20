@@ -5,7 +5,7 @@ import NotFound from './pages/NotFound'
 import Signin from './pages/Signin'
 import Developer from './pages/Developer'
 import Basiclayout from './layouts/Basiclayout'
-import { BrowserRouter } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/AppRoutes'
 import { AuthProvider } from './context/AuthContext'
 import DashboardCharts from './dashboard/DashboardCharts'
@@ -16,10 +16,11 @@ function App() {
 
   return (
     <div className="flex flex-col max-h-screen">
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-      {/* password evaluation */}
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   )
 }

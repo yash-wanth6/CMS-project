@@ -67,7 +67,7 @@ export default function DashboardTracker() {
                             key={index}
                             className="flex items-center justify-between bg-gray-100 rounded-lg px-4 py-3 shadow"
                         >
-                            <span className={`text-gray-800 ${task[1] ? 'opacity-60' : ''}`}>
+                            <span className={`text-gray-800 ${task[1] ? 'opacity-60' : ''} font-semibold`}>
                                 {task[0]}
                             </span>
                             <div className="flex items-center gap-3">
