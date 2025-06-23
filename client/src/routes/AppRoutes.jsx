@@ -12,13 +12,14 @@ import DashboardTracker from '../dashboard/DashboardTracker';
 import DashboardCharts from '../dashboard/DashboardCharts';
 import DashboardHeader from '../layouts/DashboardHeader';
 import DashboardNotes from '../dashboard/DashboardNotes';
+import DashboardChangeEmail from '../dashboard/DashboardChangeEmail';
 
 export default function AppRoutes() {
 
     const paths = ['/','/signin','/signup','/notfound','/about','/developer'];
     const values = [<Home/>,<Signin/>,<Signup/>,<NotFound/>,<Aboutpage/>,<Developer/>];
-    const dashboardPaths = ['/dashboard/home','/dashboard/tracker','/dashboard/charts','/dashboard/notes'];
-    const dashboardValues = [<DashboardHome/>,<DashboardTracker/>,<DashboardCharts/>,<DashboardNotes/>]
+    const dashboardPaths = ['/dashboard/home','/dashboard/tracker','/dashboard/charts','/dashboard/notes','/dashboard/changeemail'];
+    const dashboardValues = [<DashboardHome/>,<DashboardTracker/>,<DashboardCharts/>,<DashboardNotes/>,<DashboardChangeEmail/>]
   return (
     <Routes>
         <Route path='/' element={<Header></Header>}>

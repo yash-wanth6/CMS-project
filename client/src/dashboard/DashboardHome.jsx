@@ -40,7 +40,7 @@ export default function DashboardHome() {
         </span>
       </div>
 
-      <div className={cardClasses + " border-gray-200"}>
+      <div className={cardClasses + " border-gray-200"} onClick={() => navigate('/dashboard/changeemail')}>
         <h3 className="text-lg font-semibold">Change Email</h3>
         <p className="text-sm text-gray-500">Modify your contact email.</p>
         <span className="pt-6 mt-4 text-8xl col-span-1 sm:col-span-2 md:col-span-3 flex justify-center items-center" >
