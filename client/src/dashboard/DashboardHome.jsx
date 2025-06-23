@@ -32,7 +32,8 @@ export default function DashboardHome() {
         </span>
       </div>
 
-      <div className={cardClasses + " border-gray-200"}>
+      <div className={cardClasses + " border-gray-200"}
+          onClick={()=> navigate('/dashboard/changepassword')}>
         <h3 className="text-lg font-semibold">Change Password</h3>
         <p className="text-sm text-gray-500">Update your account security.</p>
         <span className="pt-6 pb-6 mt-4 text-8xl col-span-1 sm:col-span-2 md:col-span-3 flex justify-center items-center" >
