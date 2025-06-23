@@ -19,11 +19,9 @@ export default function AppRoutes() {
 
     const paths = ['/','/signin','/signup','/notfound','/about','/developer'];
     const values = [<Home/>,<Signin/>,<Signup/>,<NotFound/>,<Aboutpage/>,<Developer/>];
-    const dashboardPaths = ['/dashboard/home','/dashboard/tracker','/dashboard/charts','/dashboard/notes','/dashboard/changeemail'];
-    const dashboardValues = [<DashboardHome/>,<DashboardTracker/>,<DashboardCharts/>,<DashboardNotes/>,<DashboardChangeEmail/>]
-    const dashboardPaths = ['/dashboard/home','/dashboard/tracker','/dashboard/charts','/dashboard/notes','/dashboard/changepassword'];
-    const dashboardValues = [<DashboardHome/>,<DashboardTracker/>,<DashboardCharts/>,<DashboardNotes/>,<DashboardChangePassword/>]
-  return (
+    const dashboardPaths = ['/dashboard/home','/dashboard/tracker','/dashboard/charts','/dashboard/notes','/dashboard/changeemail','/dashboard/changepassword'];
+    const dashboardValues = [<DashboardHome/>,<DashboardTracker/>,<DashboardCharts/>,<DashboardNotes/>,<DashboardChangeEmail/>,<DashboardChangePassword/>]
+    return (
     <Routes>
         <Route path='/' element={<Header></Header>}>
             {
